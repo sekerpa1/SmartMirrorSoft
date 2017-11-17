@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  smartmirrorsoft:
+    image: smartmirrorsoft
+    build:
+      context: .\SmartMirrorSoft
+      dockerfile: Dockerfile
