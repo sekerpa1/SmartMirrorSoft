@@ -12,15 +12,17 @@ namespace SmartMirrorSoft.Models
     public class Module
     {
         public string Name { get; set; }
-        public Image IconPath { get; set; }
+        public ImageSource IconPath { get; set; }
 
-        public Module(string Name, string Path)
+        public Module(string name, string path)
         {
-            this.Name = Name;
+            this.Name = name;
+            IconPath = new BitmapImage(new Uri(path));
+            
             //BitmapImage image = new BitmapImage();
             //image.UriSource = new Uri(Path);
             //IconPath.Source = image;
         }
-        
+
     }
 }

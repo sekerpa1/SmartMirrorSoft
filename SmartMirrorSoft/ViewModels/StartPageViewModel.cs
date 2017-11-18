@@ -64,6 +64,24 @@ namespace SmartMirrorSoft.ViewModels
             }
         }
 
+        private int _IconWidth;
+        public int IconWidth
+        {
+
+            get
+            {
+                return _IconWidth;
+            }
+            set
+            {
+                if (value != _IconWidth)
+                {
+                    _IconWidth = value;
+                    RaisePropertyChanged("IconWidth");
+                }
+            }
+        }
+
 
         private ObservableCollection<Module> _FCPortCollection;
         public ObservableCollection<Module> FCPortCollection
@@ -83,15 +101,11 @@ namespace SmartMirrorSoft.ViewModels
         public StartPageViewModel()
         {
             Title = "Hello Joel";
-
-            BitmapImage image = new BitmapImage();
-            image.UriSource = new Uri("C://Users//Pavol//Documents//Visual Studio 2017//Projects//SmartMirrorSoft//SmartMirrorSoft//Icons//004-sunset.png");
-            IconPath = image;
-
+            
             FCPortCollection = new ObservableCollection<Module>();
-            FCPortCollection.Add(new Module("anc", "C://Users//Pavol//Documents//Visual Studio 2017//Projects//SmartMirrorSoft//SmartMirrorSoft//Icons//004-sunset.png"));
-            FCPortCollection.Add(new Module("anc", "C://Users//Pavol//Documents//Visual Studio 2017//Projects//SmartMirrorSoft//SmartMirrorSoft//Icons//004-sunset.png"));
-            FCPortCollection.Add(new Module("anc", "C://Users//Pavol//Documents//Visual Studio 2017//Projects//SmartMirrorSoft//SmartMirrorSoft//Icons//004-sunset.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/001-sunset-1.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/002-moai.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
         }
     }
 }
