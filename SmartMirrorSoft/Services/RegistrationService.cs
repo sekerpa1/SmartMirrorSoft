@@ -7,30 +7,67 @@ using SmartMirrorSoft.Models;
 using Windows.ApplicationModel;
 using System.IO;
 using System.Xml.Linq;
+using System.Resources;
 
 namespace SmartMirrorSoft.Services
 {
     public class RegistrationService : IRegistrationService
     {
         private List<BaseRunnableApp> _AvailableApps;
-        private string _PathToProgramFile;
-
-        public RegistrationService(string pathToProgramFile)
+        public List<BaseRunnableApp> AvailableApps
         {
+            get
+            {
+                if (_AvailableApps == null)
+                {
+                    // initialises apps based on file
+                    readFromXMLFile();
+                }
+
+                return _AvailableApps;
+            }
+        }
+
+        private string _PathToPrograms;
+
+        private string _PathToIcons;
+
+        public RegistrationService()
+        {
+            //check whether resources.resw exists
+
             // check whether path is correct
-            if (!File.Exists(pathToProgramFile))
+            if (!File.Exists((string) App.Current.Resources["PathToPrograms"]))
             {
                 throw new FileNotFoundException("Please supply a correct path to the program file.");
             }
+            // check whether icon directory is correct
+            if (!Directory.Exists((string)App.Current.Resources["PathToIcons"]))
+            {
+                throw new FileNotFoundException("Please supply a correct path to the icons file.");
+            }
 
-
-            _PathToProgramFile = pathToProgramFile;
-            _AvailableApps = new List<BaseRunnableApp>();
+            this._PathToPrograms = (string)App.Current.Resources["PathToPrograms"];
+            this._PathToIcons = (string)App.Current.Resources["PathToIcons"];
         }
 
         public void InstallApp(string name)
         {
             changeAppState(name, false);
+
+            // update the programs file
+            var loadedData = XDocument.Load(_PathToPrograms);
+            var program = loadedData.Element("programs")
+                .Elements("app")
+                .Where(e => e.Element("name")
+                .Value.Equals(name))
+                .Single();
+
+            program.Element("installed").Value = "Yes";
+            var writer = loadedData.CreateWriter();
+            loadedData.Save(writer);
+
+
         }
 
         public void UninstallApp(string name)
@@ -53,14 +90,10 @@ namespace SmartMirrorSoft.Services
             return _AvailableApps.Where(x => !x.Installed).ToList();
         }
 
-        private void readFromXMLFile(string IconDirectoryPath)
+        private void readFromXMLFile()
         {
-            if (!Directory.Exists(IconDirectoryPath))
-            {
-                throw new FileNotFoundException(string.Format("Directory with path '{0}' not found", IconDirectoryPath));
-            }
 
-            XDocument loadedData = XDocument.Load(_PathToProgramFile);
+            XDocument loadedData = XDocument.Load(_PathToPrograms);
             var data = from query in loadedData.Descendants("app")
                        select new BaseRunnableApp
                        {
@@ -88,7 +121,7 @@ namespace SmartMirrorSoft.Services
             // check Icon paths
             foreach (var item in data)
             {
-                if (!File.Exists(Path.Combine(IconDirectoryPath, item.IconPath)))
+                if (!File.Exists(Path.Combine(_PathToIcons, item.IconPath)))
                 {
                     throw new FileNotFoundException(string.Format("The program contains incorrect icon path : '{0}'", item.IconPath));
                 }

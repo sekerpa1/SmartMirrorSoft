@@ -4,8 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SmartMirrorSoft"
     xmlns:vm="using:SmartMirrorSoft.ViewModels"
+    xmlns:system="using:System"
     RequestedTheme="Light">
     <Application.Resources>
         <vm:ViewModelLocator xmlns:vm="using:SmartMirrorSoft.ViewModels" x:Key="Locator" />
+        <system:String x:Key="PathToIcons">
+            Icons
+        </system:String>
+        <system:String x:Key="PathToPrograms">
+            Resources/Programs.xml
+        </system:String>
     </Application.Resources>
 </Application>

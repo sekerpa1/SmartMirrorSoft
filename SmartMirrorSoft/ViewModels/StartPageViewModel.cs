@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using SmartMirrorSoft.Models;
+using SmartMirrorSoft.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -100,6 +101,7 @@ namespace SmartMirrorSoft.ViewModels
 
         public StartPageViewModel()
         {
+
             Title = "Hello Joel";
             
             FCPortCollection = new ObservableCollection<Module>();

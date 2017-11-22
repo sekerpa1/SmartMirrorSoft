@@ -5,6 +5,8 @@ using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +36,8 @@ namespace SmartMirrorSoft.ViewModels
             //Register your services used here
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
             SimpleIoc.Default.Register<StartPageViewModel>();
-
+            SimpleIoc.Default.Register<ResourceManager>(() => new ResourceManager("Resources",
+                              typeof(ViewModelLocator).GetTypeInfo().Assembly));
         }
 
 
@@ -49,6 +52,14 @@ namespace SmartMirrorSoft.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<StartPageViewModel>();
+            }
+        }
+
+        public ResourceManager ResourcesInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ResourceManager>();
             }
         }
 
