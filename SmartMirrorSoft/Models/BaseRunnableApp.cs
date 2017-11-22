@@ -17,6 +17,7 @@ namespace SmartMirrorSoft.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public bool Installed { get; set; }
+
         public virtual void Run()
         {
             throw new NotImplementedException("App does not contain the implementation of runnable interface.");

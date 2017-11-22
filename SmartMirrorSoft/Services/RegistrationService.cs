@@ -73,21 +73,38 @@ namespace SmartMirrorSoft.Services
             // check for name duplicates
             foreach (var item in data)
             {
-                if (dic.ContainsKey(item.Name))
+                if (dic.ContainsKey(item.Name) || item.Name.Equals(string.Empty))
                 {
                     throw new FormatException("The file 'Programs.xml' contains duplicates in names.");
                 }
                 dic.Add(item.Name, item.Name);
+            }
+            
+            // check Icon paths
+            foreach (var item in data)
+            {
+                if (!File.Exists(item.IconPath))
+                {
+                    throw new FileNotFoundException(string.Format("The program contains incorrect icon path : '{0}'", item.IconPath));
+                }
+                    
             }
 
 
             _AvailableApps = new List<BaseRunnableApp>();
             foreach (var item in data)
             {
-                var type = Type.GetType(item.ClassName);
-                var app = Activator.CreateInstance(type);
-                app = item;
-                _AvailableApps.Add((BaseRunnableApp)app);
+                try
+                {
+                    var type = Type.GetType(item.ClassName);
+                    var app = Activator.CreateInstance(type);
+                    app = item;
+                    _AvailableApps.Add((BaseRunnableApp)app);
+                }
+                catch (TypeLoadException e)
+                {
+                    throw new FormatException("The program contains incorrect class names.");
+                }
             }
 
         }
