@@ -53,8 +53,13 @@ namespace SmartMirrorSoft.Services
             return _AvailableApps.Where(x => !x.Installed).ToList();
         }
 
-        private void readFromXMLFile()
+        private void readFromXMLFile(string IconDirectoryPath)
         {
+            if (!Directory.Exists(IconDirectoryPath))
+            {
+                throw new FileNotFoundException(string.Format("Directory with path '{0}' not found", IconDirectoryPath));
+            }
+
             XDocument loadedData = XDocument.Load(_PathToProgramFile);
             var data = from query in loadedData.Descendants("app")
                        select new BaseRunnableApp
@@ -65,7 +70,7 @@ namespace SmartMirrorSoft.Services
                            Version = (string)query.Element("version"),
                            Description = (string)query.Element("description"),
                            IconPath = (string)query.Element("icon"),
-                           Installed = query.Element("installed").Equals("Yes")
+                           Installed = query.Element("installed").Equals(null) ? true : query.Element("installed").Equals("Yes")
                        };
 
             var dic = new Dictionary<string, string>();
@@ -83,7 +88,7 @@ namespace SmartMirrorSoft.Services
             // check Icon paths
             foreach (var item in data)
             {
-                if (!File.Exists(item.IconPath))
+                if (!File.Exists(Path.Combine(IconDirectoryPath, item.IconPath)))
                 {
                     throw new FileNotFoundException(string.Format("The program contains incorrect icon path : '{0}'", item.IconPath));
                 }

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<program>
+<app>
+  <name>Calcula123tor</name>
+  <price>Free</price>
+  <classname>Calculator.class</classname>
+  <version>1.0.0.</version>
+  <description>
+    An electronic calculator is typically a portable eld's general-purpose hardware capacity to compute information. By 2007, this diminished to less than 0.05%.
+  </description>
+  <icon>Calculator-512.png</icon>
+  <installed>no</installed>
+</app>
+  <app>
+    <name>Gastan</name>
+    <price>Free</price>
+    <classname>Calculator.class</classname>
+    <version>1.0.0.</version>
+    <description>
+      An electronic calculator is typically a portable eld's general-purpose hardware capacity to compute information. By 2007, this diminished to less than 0.05%.
+    </description>
+    <icon>Calculator-512.png</icon>
+    <installed>no</installed>
+  </app>
+  <app>
+    <name>Calcula123tor</name>
+    <price>Free</price>
+    <classname>Calculator.class</classname>
+    <version>1.0.0.</version>
+    <description>
+      An electronic calculator is typically a portable eld's general-purpose hardware capacity to compute information. By 2007, this diminished to less than 0.05%.
+    </description>
+    <icon>Calculator-512.png</icon>
+    <installed>no</installed>
+  </app>
+</program>
