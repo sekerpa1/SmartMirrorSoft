@@ -8,11 +8,15 @@ using Windows.ApplicationModel;
 using System.IO;
 using System.Xml.Linq;
 using System.Resources;
+using Windows.UI.Xaml;
+using SmartMirrorSoft.Programs;
 
 namespace SmartMirrorSoft.Services
 {
     public class RegistrationService : IRegistrationService
     {
+        private IRunnableAppFactory _AppFactory;
+
         private List<BaseRunnableApp> _AvailableApps;
         public List<BaseRunnableApp> AvailableApps
         {
@@ -32,10 +36,9 @@ namespace SmartMirrorSoft.Services
 
         private string _PathToIcons;
 
-        public RegistrationService()
+        public RegistrationService(IRunnableAppFactory runnableAppFactory)
         {
-            //check whether resources.resw exists
-
+            this._AppFactory = runnableAppFactory;
             // check whether path is correct
             if (!File.Exists((string) App.Current.Resources["PathToPrograms"]))
             {
@@ -56,16 +59,16 @@ namespace SmartMirrorSoft.Services
             changeAppState(name, false);
 
             // update the programs file
-            var loadedData = XDocument.Load(_PathToPrograms);
-            var program = loadedData.Element("programs")
-                .Elements("app")
-                .Where(e => e.Element("name")
-                .Value.Equals(name))
-                .Single();
+            //var loadedData = XDocument.Load(_PathToPrograms);
+            //var program = loadedData.Element("programs")
+            //    .Elements("app")
+            //    .Where(e => e.Element("name")
+            //    .Value.Equals(name))
+            //    .Single();
 
-            program.Element("installed").Value = "Yes";
-            var writer = loadedData.CreateWriter();
-            loadedData.Save(writer);
+            //program.Element("installed").Value = "Yes";
+            //var writer = loadedData.CreateWriter();
+            //loadedData.Save(writer);
 
 
         }
@@ -90,16 +93,15 @@ namespace SmartMirrorSoft.Services
             return _AvailableApps.Where(x => !x.Installed).ToList();
         }
 
-        private void readFromXMLFile()
+        public void readFromXMLFile()
         {
 
             XDocument loadedData = XDocument.Load(_PathToPrograms);
             var data = from query in loadedData.Descendants("app")
-                       select new BaseRunnableApp
+                       select new
                        {
                            Name = (string)query.Element("name"),
                            Price = (string)query.Element("price"),
-                           ClassName = (string)query.Element("classname"),
                            Version = (string)query.Element("version"),
                            Description = (string)query.Element("description"),
                            IconPath = (string)query.Element("icon"),
@@ -132,17 +134,10 @@ namespace SmartMirrorSoft.Services
             _AvailableApps = new List<BaseRunnableApp>();
             foreach (var item in data)
             {
-                try
-                {
-                    var type = Type.GetType(item.ClassName);
-                    var app = Activator.CreateInstance(type);
-                    app = item;
-                    _AvailableApps.Add((BaseRunnableApp)app);
-                }
-                catch (TypeLoadException e)
-                {
-                    throw new FormatException("The program contains incorrect class names.");
-                }
+                var app = _AppFactory.GetInstance(item.Name,
+                        item.IconPath, item.Version, item.Description,
+                        item.Price, item.Installed);
+                    _AvailableApps.Add(app);
             }
 
         }

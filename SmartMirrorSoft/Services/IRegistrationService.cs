@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmartMirrorSoft.Services
 {
-    interface IRegistrationService
+    public interface IRegistrationService
     {
         List<BaseRunnableApp> GetAllApps();
         List<BaseRunnableApp> GetInstalledApps();

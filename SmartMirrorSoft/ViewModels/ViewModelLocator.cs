@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using SmartMirrorSoft.Models;
+using SmartMirrorSoft.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,8 +38,13 @@ namespace SmartMirrorSoft.ViewModels
             //Register your services used here
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
             SimpleIoc.Default.Register<StartPageViewModel>();
-            SimpleIoc.Default.Register<ResourceManager>(() => new ResourceManager("Resources",
-                              typeof(ViewModelLocator).GetTypeInfo().Assembly));
+            SimpleIoc.Default.Register<AppStoreViewModel>();
+            SimpleIoc.Default.Register<IRunnableAppFactory, RunnableAppFactory>();
+            SimpleIoc.Default.Register<IRegistrationService>(() => new RegistrationService(RunnableAppFactoryInstance));
+
+            var RegistrationServiceInstan = (RegistrationService)RegistrationServiceInstance;
+            RegistrationServiceInstan.readFromXMLFile();
+
         }
 
 
@@ -55,11 +62,27 @@ namespace SmartMirrorSoft.ViewModels
             }
         }
 
-        public ResourceManager ResourcesInstance
+        public AppStoreViewModel AppStoreInstance
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<ResourceManager>();
+                return ServiceLocator.Current.GetInstance<AppStoreViewModel>();
+            }
+        }
+
+        public IRegistrationService RegistrationServiceInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IRegistrationService>();
+            }
+        }
+        
+        public IRunnableAppFactory RunnableAppFactoryInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IRunnableAppFactory>();
             }
         }
 

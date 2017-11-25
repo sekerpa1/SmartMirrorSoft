@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.15063.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -96,13 +96,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseRunnableApp.cs" />
+    <Compile Include="Models\IRunnableAppFactory.cs" />
     <Compile Include="Models\Module.cs" />
+    <Compile Include="Models\RunnableAppFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Programs\Calculator.cs" />
     <Compile Include="Services\IRegistrationService.cs" />
     <Compile Include="Services\RegistrationService.cs" />
+    <Compile Include="ViewModels\AppStoreViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\AppStorePage.xaml.cs">
+      <DependentUpon>AppStorePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,16 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Styles\AppBar\AppBarButtonSecondaryIconStyle\README.md" />
+    <None Include="Styles\AppBar\AppBarToggleButtonUnderlineStyle\README.md" />
+    <None Include="Styles\Button\ButtonCircleStyle\README.md" />
+    <None Include="Styles\Button\ButtonRoundedStyle\README.md" />
+    <None Include="Styles\ContentDialog\ContentDialogWithCloseButtonStyle\README.md" />
+    <None Include="Styles\Pivot\PivotBottomHeaderStyle\README.md" />
+    <None Include="Styles\Pivot\PivotHeaderItemAccentUnderlineStyle\README.md" />
+    <None Include="Styles\Pivot\PivotTabbedStyle\README.md" />
+    <None Include="Styles\ProgressRing\README.md" />
+    <None Include="Styles\ToggleButton\ToggleButtonTwitterStyle\README.md" />
     <PRIResource Include="Resources\Resources.resw" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
@@ -239,6 +255,7 @@
     <Content Include="Icons\118-mosque.png" />
     <Content Include="Icons\119-car.png" />
     <Content Include="Icons\120-boat.png" />
+    <Content Include="Icons\Calculator-512.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -250,6 +267,20 @@
     <Content Include="Resources\Programs.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Styles\AppBar\AppBarButtonSecondaryIconStyle\AppBarButtonSecondaryIconStyle.gif" />
+    <Content Include="Styles\AppBar\AppBarToggleButtonUnderlineStyle\DefaultChecked.PNG" />
+    <Content Include="Styles\AppBar\AppBarToggleButtonUnderlineStyle\ordinaryCompact.PNG" />
+    <Content Include="Styles\AppBar\AppBarToggleButtonUnderlineStyle\themeCompact.PNG" />
+    <Content Include="Styles\AppBar\AppBarToggleButtonUnderlineStyle\themeFullSize.png" />
+    <Content Include="Styles\Button\ButtonCircleStyle\ButtonCircleStyle.gif" />
+    <Content Include="Styles\Button\ButtonRoundedStyle\ButtonRoundedStyle.gif" />
+    <Content Include="Styles\ContentDialog\ContentDialogWithCloseButtonStyle\ContentDialogWithCloseButtonStyle.gif" />
+    <Content Include="Styles\Pivot\PivotBottomHeaderStyle\PivotBottomHeaderStyle.gif" />
+    <Content Include="Styles\Pivot\PivotHeaderItemAccentUnderlineStyle\PivotHeaderItemAccentUnderlineStyle.gif" />
+    <Content Include="Styles\Pivot\PivotTabbedStyle\PivotTabbedStyle.gif" />
+    <Content Include="Styles\ProgressRing\ProgressRingStyle1.gif" />
+    <Content Include="Styles\ProgressRing\ProgressRingStyle2.gif" />
+    <Content Include="Styles\ToggleButton\ToggleButtonTwitterStyle\ToggleButtonTwitterStyle.gif" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -269,6 +300,71 @@
     <Folder Include="UnitTests\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\BaseDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\AppBar\AppBarButtonSecondaryIconStyle\AppBarButtonSecondaryIconStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\AppBar\AppBarToggleButtonUnderlineStyle\AppBarToggleButtonUnderlineStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Button\ButtonCircleStyle\ButtonCircleStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Button\ButtonRoundedStyle\ButtonRoundedStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ContentDialog\ContentDialogWithCloseButtonStyle\ContentDialogWithCloseButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Pivot\PivotBottomHeaderStyle\PivotBottomHeaderStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Pivot\PivotHeaderItemAccentUnderlineStyle\PivotHeaderItemAccentUnderlineStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Pivot\PivotTabbedStyle\PivotHeaderItemTabbedStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Pivot\PivotTabbedStyle\PivotTabbedStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ProgressRing\ProgressRingStyle1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ProgressRing\ProgressRingStyle2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToggleButton\ToggleButtonTwitterStyle\ToggleButtonHeartStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToggleButton\ToggleButtonTwitterStyle\ToggleButtonSmileyStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToggleButton\ToggleButtonTwitterStyle\ToggleButtonStarStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AppStorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

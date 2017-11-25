@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartMirrorSoft.Resources"
+    xmlns:vm="using:SmartMirrorSoft.ViewModels"
+    >
+
+    <x:String x:Key="PathToIcons">Icons</x:String>
+    <x:String x:Key="PathToPrograms">Resources/Programs.xml</x:String>
+    <vm:ViewModelLocator xmlns:vm="using:SmartMirrorSoft.ViewModels" x:Key="Locator" />
+
+</ResourceDictionary>

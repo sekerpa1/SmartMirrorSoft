@@ -4,15 +4,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SmartMirrorSoft"
     xmlns:vm="using:SmartMirrorSoft.ViewModels"
-    xmlns:system="using:System"
     RequestedTheme="Light">
     <Application.Resources>
-        <vm:ViewModelLocator xmlns:vm="using:SmartMirrorSoft.ViewModels" x:Key="Locator" />
-        <system:String x:Key="PathToIcons">
-            Icons
-        </system:String>
-        <system:String x:Key="PathToPrograms">
-            Resources/Programs.xml
-        </system:String>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\BaseDictionary.xaml"/>
+                <ResourceDictionary Source="Styles\AppBar\AppBarButtonSecondaryIconStyle\AppBarButtonSecondaryIconStyle.xaml"/>
+                <ResourceDictionary Source="Styles\AppBar\AppBarToggleButtonUnderlineStyle\AppBarToggleButtonUnderlineStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Button\ButtonCircleStyle\ButtonCircleStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Button\ButtonRoundedStyle\ButtonRoundedStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Button\ButtonCircleStyle\ButtonCircleStyle.xaml"/>
+                <ResourceDictionary Source="Styles\ContentDialog\ContentDialogWithCloseButtonStyle\ContentDialogWithCloseButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Pivot\PivotBottonHeaderStyle\PivotBottonHeaderStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Pivot\PivotHeaderItemAccentUnderlineStyle\PivotHeaderItemAccentUnderlineStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Pivot\PivotTabbedStyle\PivotHeaderItemTabbedStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Pivot\PivotTabbedStyle\PivotTabbedStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
