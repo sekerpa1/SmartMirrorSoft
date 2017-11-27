@@ -1,12 +1,20 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using SmartMirrorSoft.Models;
 using SmartMirrorSoft.Services;
+using SmartMirrorSoft.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -44,6 +52,29 @@ namespace SmartMirrorSoft.ViewModels
                     _title = value;
                     RaisePropertyChanged("Title");
                 }
+            }
+        }
+
+        public ICommand StartCommand
+        {
+            get
+            {
+                return new RelayCommand(async () =>
+                {
+                    CoreApplicationView newView = CoreApplication.CreateNewView();
+                    int newViewId = 0;
+                    await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+                        Frame frame = new Frame();
+                        frame.Navigate(typeof(CalculatorPage), null);
+                        Window.Current.Content = frame;
+                        // You have to activate the window in order to show it later.
+                        Window.Current.Activate();
+
+                        newViewId = ApplicationView.GetForCurrentView().Id;
+                    });
+                    bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+                });
             }
         }
 

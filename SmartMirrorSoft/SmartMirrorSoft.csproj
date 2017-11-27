@@ -104,10 +104,14 @@
     <Compile Include="Services\IRegistrationService.cs" />
     <Compile Include="Services\RegistrationService.cs" />
     <Compile Include="ViewModels\AppStoreViewModel.cs" />
+    <Compile Include="ViewModels\CalculatorViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\AppStorePage.xaml.cs">
       <DependentUpon>AppStorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CalculatorPage.xaml.cs">
+      <DependentUpon>CalculatorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
@@ -297,6 +301,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\" />
     <Folder Include="UnitTests\" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +367,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AppStorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CalculatorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

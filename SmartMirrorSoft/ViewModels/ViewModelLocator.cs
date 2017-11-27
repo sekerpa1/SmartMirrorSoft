@@ -36,12 +36,14 @@ namespace SmartMirrorSoft.ViewModels
             }
 
             //Register your services used here
+            SimpleIoc.Default.Unregister<IRegistrationService>();
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
             SimpleIoc.Default.Register<StartPageViewModel>();
             SimpleIoc.Default.Register<AppStoreViewModel>();
             SimpleIoc.Default.Register<IRunnableAppFactory, RunnableAppFactory>();
             SimpleIoc.Default.Register<IRegistrationService>(() => new RegistrationService(RunnableAppFactoryInstance));
-
+            SimpleIoc.Default.Register<CalculatorViewModel>();
+            
             var RegistrationServiceInstan = (RegistrationService)RegistrationServiceInstance;
             RegistrationServiceInstan.readFromXMLFile();
 
@@ -54,6 +56,15 @@ namespace SmartMirrorSoft.ViewModels
         // <value>
         // The StartPage view model.
         // </value>
+
+        public CalculatorViewModel CalculatorInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CalculatorViewModel>();
+            }
+        }
+
         public StartPageViewModel StartPageInstance
         {
             get

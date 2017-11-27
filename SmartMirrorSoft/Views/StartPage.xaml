@@ -9,22 +9,23 @@
     mc:Ignorable="d" Height="502.074">
 
     <Grid Background="{StaticResource SystemControlBackgroundChromeBlackHighBrush}">
-        <!--<Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="{Binding IconPath, Mode=OneWay}" />
-        <Button HorizontalAlignment="Left" Height="100" Margin="10,110,0,0" VerticalAlignment="Top" Width="100"/>-->
+        <!--<Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="{Binding IconPath, Mode=OneWay}" />-->
+        <Button Command="{Binding StartCommand}"
+            HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Background="Aquamarine"/>
 
-        <ListView x:Name="ListViewMain" ItemsSource="{Binding FCPortCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="100" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
+        <!--<ListView x:Name="ListViewMain" ItemsSource="{Binding FCPortCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="100" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <!--<Button Click = "OnClick" 
+                    <Button Click = "OnClick" 
             ClickMode = "Press" 
             Margin = "10"  
             Width = "50" 
-            Foreground = "Black">-->
-                        <Image HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Center" Source="{Binding Path=IconPath}"/>
-                    <!--</Button>-->
+            Foreground = "Black">
+                    <Image HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Center" Source="{Binding Path=IconPath}"/>
+                    </Button>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView> -->
 
     </Grid>
 </Page>

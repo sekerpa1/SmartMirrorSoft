@@ -11,18 +11,19 @@
     Height="502.074">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Pivot Style="{StaticResource PivotTabbedStyle}">
+        <Pivot Style="{StaticResource PivotTabbedStyle}" Background="Black">
             <Pivot.Resources>
                 <Style TargetType="PivotHeaderItem" BasedOn="{StaticResource PivotHeaderItemTabbedStyle}" />
 
             </Pivot.Resources>
-            <PivotItem Header="Pivot Item 1">
+            <PivotItem  Header="Pivot Item 1" Foreground="DeepSkyBlue">
                 <!--Pivot content goes here-->
                 <TextBlock Text="Content of pivot item 1."/>
             </PivotItem>
             <PivotItem Header="Pivot Item 2">
-                <!--Pivot content goes here-->
-                <TextBlock Text="Content of pivot item 2."/>
+                <StackPanel>
+                    <TextBlock Text="Content of pivot item 2."/>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="Pivot Item 3">
                 <!--Pivot content goes here-->

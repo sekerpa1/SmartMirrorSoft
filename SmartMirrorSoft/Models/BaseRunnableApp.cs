@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.UI.Xaml.Media;
 
 namespace SmartMirrorSoft.Models
@@ -16,9 +17,6 @@ namespace SmartMirrorSoft.Models
         public string Price { get; set; }
         public bool Installed { get; set; }
 
-        public virtual void Run()
-        {
-            throw new NotImplementedException("App does not contain the implementation of runnable interface.");
-        }
+        public virtual ICommand LaunchAppCmd { get; private set; }
     }
 }

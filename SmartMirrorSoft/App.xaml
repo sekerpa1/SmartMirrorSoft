@@ -15,7 +15,7 @@
                 <ResourceDictionary Source="Styles\Button\ButtonRoundedStyle\ButtonRoundedStyle.xaml"/>
                 <ResourceDictionary Source="Styles\Button\ButtonCircleStyle\ButtonCircleStyle.xaml"/>
                 <ResourceDictionary Source="Styles\ContentDialog\ContentDialogWithCloseButtonStyle\ContentDialogWithCloseButtonStyle.xaml"/>
-                <ResourceDictionary Source="Styles\Pivot\PivotBottonHeaderStyle\PivotBottonHeaderStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Pivot\PivotBottomHeaderStyle\PivotBottomHeaderStyle.xaml"/>
                 <ResourceDictionary Source="Styles\Pivot\PivotHeaderItemAccentUnderlineStyle\PivotHeaderItemAccentUnderlineStyle.xaml"/>
                 <ResourceDictionary Source="Styles\Pivot\PivotTabbedStyle\PivotHeaderItemTabbedStyle.xaml"/>
                 <ResourceDictionary Source="Styles\Pivot\PivotTabbedStyle\PivotTabbedStyle.xaml"/>
