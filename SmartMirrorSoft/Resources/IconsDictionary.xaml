@@ -1,0 +1,10 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmartMirrorSoft.Resources">
+
+    <x:String x:Key="AllPrograms">Icons/appbar.resource.group.png</x:String>
+    <x:String x:Key="InstalledPrograms">ms-appx://SmartMirrorSoft/Icons/</x:String>
+    <x:String x:Key="AvailablePrograms">ms-appx://SmartMirrorSoft/Icons/</x:String>
+
+</ResourceDictionary>

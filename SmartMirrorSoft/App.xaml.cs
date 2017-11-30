@@ -67,7 +67,7 @@ namespace SmartMirrorSoft
                     // Pokud není navigační zásobník obnovený, přejít na první stránku
                     // a nakonfigurovat novou stránku předáním požadovaných informací ve formě
                     // parametru navigace
-                    rootFrame.Navigate(typeof(StartPage), e.Arguments);
+                    rootFrame.Navigate(typeof(AppStorePage), e.Arguments);
                 }
                 // Zkontrolovat, jestli je aktuální okno aktivní
                 Window.Current.Activate();

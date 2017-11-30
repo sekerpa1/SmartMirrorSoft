@@ -134,9 +134,9 @@ namespace SmartMirrorSoft.ViewModels
         {
 
             Title = "Hello Joel";
-            
+            IconPath = new BitmapImage(new Uri("ms-appx://SmartMirrorSoft/Icons/appbar.paw.png"));
             FCPortCollection = new ObservableCollection<Module>();
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/001-sunset-1.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/appbar.paw.png"));
             FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/002-moai.png"));
             FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
             FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
