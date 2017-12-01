@@ -12,20 +12,25 @@
         <!--<Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Source="{Binding IconPath, Mode=OneWay}" />-->
         <!--<Button Command="{Binding StartCommand}"
             HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Background="Aquamarine"/>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.12*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <ListView x:Name="ListViewMain" ItemsSource="{Binding FCPortCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="100" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
+        <ListView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"  x:Name="ListViewMain" ItemsSource="{Binding FCPortCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="100" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Button Click = "OnClick" 
-            ClickMode = "Press" 
-            Margin = "10"  
-            Width = "50" 
-            Foreground = "Black">
-                        <Image HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Center" Source="{Binding Path=IconPath}"/>
-                    </Button>
+                    <Image HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Center" Source="{Binding Path=IconPath}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <Button Command="{Binding NavigateCommand}" Grid.Column="2" Grid.Row="1" >
+            <Image Source="{Binding Path=IconPath}"/>
+        </Button>
     </Grid>
 </Page>

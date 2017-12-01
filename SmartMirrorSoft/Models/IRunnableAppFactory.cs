@@ -10,6 +10,6 @@ namespace SmartMirrorSoft.Models
     {
         BaseRunnableApp GetInstance(string name, string iconPath,
             string version, string description,
-            string price, bool installed);
+            string price, string installed);
     }
 }

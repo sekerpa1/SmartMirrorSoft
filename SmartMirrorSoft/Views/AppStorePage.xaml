@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:p="using:Windows.UI.Xaml.Controls.Primitives"
+    xmlns:converter="using:SmartMirrorSoft.Converters"
     DataContext="{Binding AppStoreInstance, Source={StaticResource Locator}}"
     mc:Ignorable="d"
     Height="502.074">
@@ -140,10 +141,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Crimson"/>
+            <Setter Property="Padding" Value="20,5"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <converter:PathToIconConverter x:Key="ImageConverter"/>
+        <converter:BoolToInstallUninstallConverter x:Key="InstallConverter"/>
         <x:String x:Key="AllPrograms">ms-appx://SmartMirrorSoft/Icons/appbar.resource.group.png</x:String>
         <x:String x:Key="AvailablePrograms">ms-appx://SmartMirrorSoft/Icons/appbar.resource.png</x:String>
         <x:String x:Key="InstalledPrograms">ms-appx://SmartMirrorSoft/Icons/appbar.social.dropbox.png</x:String>
+        <x:Boolean x:Key="FalseParam">False</x:Boolean>
+        <x:Boolean x:Key="TrueParam">True</x:Boolean>
     </Page.Resources>
     <Grid Background="DarkGray">
         <Pivot>
@@ -153,27 +164,131 @@
                 </PivotItem.Header>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.12*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="2*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+                    <ListView SelectionMode="Single"  SelectedItem="{Binding Path=SelectedProgram, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="5" ItemsSource="{Binding Programs}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="30" Source="{Binding IconPath, Converter={StaticResource ImageConverter}}" />
+                                    <Border BorderBrush="{x:Null}" Height="50">
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Foreground="White" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock Grid.RowSpan="2" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" Text="{Binding Path=SelectedProgram.Name}"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" Text="Version"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Path=SelectedProgram.Version}"/>
+                    <ScrollViewer Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" >
+                        <TextBlock Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Style="{StaticResource BodyTextBlockStyle}"  Text="{Binding Path=SelectedProgram.Description}"/>
+                    </ScrollViewer>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource SubheaderTextBlockStyle}"  Text="Description"/>
+                    <Button Style="{StaticResource ButtonRoundedStyle}"  Grid.Column="3" Grid.Row="4" >
+                        <TextBlock Text="{Binding Path=SelectedProgram.Installed, Converter={StaticResource InstallConverter}}"/>
+                    </Button>
                 </Grid>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
                     <controls:TabHeader Icon="{StaticResource AvailablePrograms}"/>
                 </PivotItem.Header>
-                <TextBlock>Content 2</TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.12*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ListView SelectionMode="Single"  SelectedItem="{Binding Path=SelectedProgram, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="5" ItemsSource="{Binding AvailablePrograms}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="30" Source="{Binding IconPath, Converter={StaticResource ImageConverter}}" />
+                                    <Border BorderBrush="{x:Null}" Height="50">
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Foreground="White" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock Grid.RowSpan="2" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" Text="{Binding Path=SelectedProgram.Name}"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" Text="Version"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Path=SelectedProgram.Version}"/>
+                    <ScrollViewer Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" >
+                        <TextBlock Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Style="{StaticResource BodyTextBlockStyle}"  Text="{Binding Path=SelectedProgram.Description}"/>
+                    </ScrollViewer>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource SubheaderTextBlockStyle}"  Text="Description"/>
+                    <Button Style="{StaticResource ButtonRoundedStyle}"  Grid.Column="3" Grid.Row="4" >
+                        <TextBlock Text="{Binding Path=SelectedProgram.Installed, Converter={StaticResource InstallConverter}}"/>
+                    </Button>
+                </Grid>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
                     <controls:TabHeader Icon="{StaticResource InstalledPrograms}"/>
                 </PivotItem.Header>
-                <TextBlock>Content 1</TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.12*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ListView SelectionMode="Single"  SelectedItem="{Binding Path=SelectedProgram, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="ListViewMain" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="5" ItemsSource="{Binding InstalledPrograms}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Height="30" Source="{Binding IconPath, Converter={StaticResource ImageConverter}}" />
+                                    <Border BorderBrush="{x:Null}" Height="50">
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Foreground="White" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <TextBlock Grid.RowSpan="2" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" Text="{Binding Path=SelectedProgram.Name}"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" Text="Version"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Path=SelectedProgram.Version}"/>
+                    <ScrollViewer Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" >
+                        <TextBlock Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Style="{StaticResource BodyTextBlockStyle}"  Text="{Binding Path=SelectedProgram.Description}"/>
+                    </ScrollViewer>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource SubheaderTextBlockStyle}"  Text="Description"/>
+                    <Button Style="{StaticResource ButtonRoundedStyle}"  Grid.Column="3" Grid.Row="4" >
+                        <TextBlock Text="{Binding Path=SelectedProgram.Installed, Converter={StaticResource InstallConverter}}"/>
+                    </Button>
+                </Grid>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <Button Content="Back" Command="{Binding NavigateCommand}">
+                    </Button>
+                </PivotItem.Header>
             </PivotItem>
         </Pivot>
     </Grid>

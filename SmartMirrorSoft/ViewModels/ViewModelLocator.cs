@@ -2,8 +2,10 @@
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using SmartMirrorSoft.Converters;
 using SmartMirrorSoft.Models;
 using SmartMirrorSoft.Services;
+using SmartMirrorSoft.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,17 +38,27 @@ namespace SmartMirrorSoft.ViewModels
             }
 
             //Register your services used here
-            SimpleIoc.Default.Unregister<IRegistrationService>();
+
+            var nav = new NavigationService();
+            nav.Configure("AppStorePage", typeof(AppStorePage));
+            nav.Configure("StartPage", typeof(StartPage));
+
+
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
-            SimpleIoc.Default.Register<StartPageViewModel>();
-            SimpleIoc.Default.Register<AppStoreViewModel>();
+            SimpleIoc.Default.Unregister<StartPageViewModel>();
+            SimpleIoc.Default.Register<StartPageViewModel>(() => new StartPageViewModel(nav));
+            
             SimpleIoc.Default.Register<IRunnableAppFactory, RunnableAppFactory>();
+
+            SimpleIoc.Default.Unregister<IRegistrationService>();
             SimpleIoc.Default.Register<IRegistrationService>(() => new RegistrationService(RunnableAppFactoryInstance));
             SimpleIoc.Default.Register<CalculatorViewModel>();
             
-            var RegistrationServiceInstan = (RegistrationService)RegistrationServiceInstance;
-            RegistrationServiceInstan.readFromXMLFile();
+            SimpleIoc.Default.Register<PathToIconConverter>();
+            SimpleIoc.Default.Unregister<AppStoreViewModel>();
+            SimpleIoc.Default.Register<AppStoreViewModel>(() => new AppStoreViewModel(RegistrationServiceInstance, PathToIconConverterInstance, nav));
 
+            
         }
 
 
@@ -56,6 +68,14 @@ namespace SmartMirrorSoft.ViewModels
         // <value>
         // The StartPage view model.
         // </value>
+        
+        public PathToIconConverter PathToIconConverterInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<PathToIconConverter>();
+            }
+        }
 
         public CalculatorViewModel CalculatorInstance
         {

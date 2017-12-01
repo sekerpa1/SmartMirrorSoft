@@ -23,11 +23,6 @@ namespace SmartMirrorSoft.Views
         {
             this.InitializeComponent();
         }
-
-        void OnClick(object sender, RoutedEventArgs e)
-        {
-            int i = 0;
-            int j = 590;
-        }
+        
     }
 }

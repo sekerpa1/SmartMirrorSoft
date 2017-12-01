@@ -98,6 +98,8 @@
     <Compile Include="Controls\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToInstallUninstallConverter.cs" />
+    <Compile Include="Converters\PathToIconConverter.cs" />
     <Compile Include="Models\BaseRunnableApp.cs" />
     <Compile Include="Models\IRunnableAppFactory.cs" />
     <Compile Include="Models\Module.cs" />
@@ -1523,7 +1525,15 @@
     <Content Include="Icons\appbar.youtube.play.png" />
     <Content Include="Icons\appbar.youtube.png" />
     <Content Include="Icons\appbar.zune.png" />
+    <Content Include="Icons\appstore.png" />
     <Content Include="Icons\Calculator-512.png" />
+    <Content Include="Icons\calendar-512.png" />
+    <Content Include="Icons\calendar.png" />
+    <Content Include="Icons\chrome_by_dtafalonso-d67pbhl.png" />
+    <Content Include="Icons\gdrive.png" />
+    <Content Include="Icons\Martz90-Circle-Calendar.png" />
+    <Content Include="Icons\niexjjzstcseuzdzkvoq.png" />
+    <Content Include="Icons\store.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

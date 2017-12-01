@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using SmartMirrorSoft.Models;
 using SmartMirrorSoft.Services;
 using SmartMirrorSoft.Views;
@@ -22,6 +23,8 @@ namespace SmartMirrorSoft.ViewModels
 {
     public class StartPageViewModel : ViewModelBase
     {
+        private INavigationService _NavigationService;
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -54,29 +57,36 @@ namespace SmartMirrorSoft.ViewModels
                 }
             }
         }
-
-        public ICommand StartCommand
+        public ICommand NavigateCommand
         {
             get
             {
-                return new RelayCommand(async () =>
-                {
-                    CoreApplicationView newView = CoreApplication.CreateNewView();
-                    int newViewId = 0;
-                    await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                    {
-                        Frame frame = new Frame();
-                        frame.Navigate(typeof(CalculatorPage), null);
-                        Window.Current.Content = frame;
-                        // You have to activate the window in order to show it later.
-                        Window.Current.Activate();
-
-                        newViewId = ApplicationView.GetForCurrentView().Id;
-                    });
-                    bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-                });
+                return new RelayCommand(() => _NavigationService.NavigateTo("AppStorePage"));
             }
         }
+
+        //public ICommand StartCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(async () =>
+        //        {
+        //            CoreApplicationView newView = CoreApplication.CreateNewView();
+        //            int newViewId = 0;
+        //            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+        //            {
+        //                Frame frame = new Frame();
+        //                frame.Navigate(typeof(AppStorePage), null);
+        //                Window.Current.Content = frame;
+        //                // You have to activate the window in order to show it later.
+        //                Window.Current.Activate();
+
+        //                newViewId = ApplicationView.GetForCurrentView().Id;
+        //            });
+        //            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+        //        });
+        //    }
+        //}
 
         private ImageSource _IconPath;
         public ImageSource IconPath
@@ -130,22 +140,16 @@ namespace SmartMirrorSoft.ViewModels
             }
         }
 
-        public StartPageViewModel()
+        public StartPageViewModel(INavigationService navigationService)
         {
 
             Title = "Hello Joel";
-            IconPath = new BitmapImage(new Uri("ms-appx://SmartMirrorSoft/Icons/appbar.paw.png"));
             FCPortCollection = new ObservableCollection<Module>();
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/appbar.paw.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/002-moai.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
-            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/005-map.png"));
+            IconPath = new BitmapImage(new Uri("ms-appx://SmartMirrorSoft/Icons/store.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/chrome_by_dtafalonso-d67pbhl.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/niexjjzstcseuzdzkvoq.png"));
+            FCPortCollection.Add(new Module("anc", "ms-appx://SmartMirrorSoft/Icons/calendar-512.png"));
+            _NavigationService = navigationService;
         }
     }
 }

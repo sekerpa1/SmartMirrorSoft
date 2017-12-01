@@ -80,17 +80,17 @@ namespace SmartMirrorSoft.Services
         
         public List<BaseRunnableApp> GetAllApps()
         {
-            return _AvailableApps;
+            return AvailableApps;
         }
 
         public List<BaseRunnableApp> GetInstalledApps()
         {
-            return _AvailableApps.Where(x => x.Installed).ToList();
+            return AvailableApps.Where(x => x.Installed).ToList();
         }
 
         public List<BaseRunnableApp> GetAvailableApps()
         {
-            return _AvailableApps.Where(x => !x.Installed).ToList();
+            return AvailableApps.Where(x => !x.Installed).ToList();
         }
 
         public void readFromXMLFile()
@@ -105,7 +105,7 @@ namespace SmartMirrorSoft.Services
                            Version = (string)query.Element("version"),
                            Description = (string)query.Element("description"),
                            IconPath = (string)query.Element("icon"),
-                           Installed = query.Element("installed").Equals(null) ? true : query.Element("installed").Equals("Yes")
+                           Installed = (string)query.Element("installed")
                        };
 
             var dic = new Dictionary<string, string>();
