@@ -150,10 +150,10 @@
         </Style>
         <converter:PathToIconConverter x:Key="ImageConverter"/>
         <converter:BoolToInstallUninstallConverter x:Key="InstallConverter"/>
-        <x:String x:Key="AllPrograms">ms-appx://SmartMirrorSoft/Icons/appbar.resource.group.png</x:String>
-        <x:String x:Key="AvailablePrograms">ms-appx://SmartMirrorSoft/Icons/appbar.resource.png</x:String>
-        <x:String x:Key="InstalledPrograms">ms-appx://SmartMirrorSoft/Icons/appbar.social.dropbox.png</x:String>
-        <x:Boolean x:Key="FalseParam">False</x:Boolean>
+        <x:String x:Key="AllPrograms">ms-appx://SmartMirrorSoft/Icons/appbar.resource.group_light.png</x:String>
+        <x:String x:Key="AvailablePrograms">ms-appx://SmartMirrorSoft/Icons/appbar.resource_light.png</x:String>
+        <x:String x:Key="InstalledPrograms">ms-appx://SmartMirrorSoft/Icons/appbar.social.dropbox_light.png</x:String>
+        <x:Boolean x:Key="FalseParam">False</x:Boolean> 
         <x:Boolean x:Key="TrueParam">True</x:Boolean>
     </Page.Resources>
     <Grid Background="DarkGray">

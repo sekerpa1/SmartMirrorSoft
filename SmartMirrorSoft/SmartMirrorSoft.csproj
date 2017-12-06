@@ -18,6 +18,10 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>SmartMirrorSoft_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -1140,7 +1144,9 @@
     <Content Include="Icons\appbar.reply.people.png" />
     <Content Include="Icons\appbar.reset.png" />
     <Content Include="Icons\appbar.resource.group.png" />
+    <Content Include="Icons\appbar.resource.group_light.png" />
     <Content Include="Icons\appbar.resource.png" />
+    <Content Include="Icons\appbar.resource_light.png" />
     <Content Include="Icons\appbar.return.png" />
     <Content Include="Icons\appbar.ribbon.png" />
     <Content Include="Icons\appbar.ribbon.wave.png" />
@@ -1253,6 +1259,7 @@
     <Content Include="Icons\appbar.social.dropbox.download.png" />
     <Content Include="Icons\appbar.social.dropbox.png" />
     <Content Include="Icons\appbar.social.dropbox.upload.png" />
+    <Content Include="Icons\appbar.social.dropbox_light.png" />
     <Content Include="Icons\appbar.social.drupal.png" />
     <Content Include="Icons\appbar.social.engadget.png" />
     <Content Include="Icons\appbar.social.etsy.png" />
