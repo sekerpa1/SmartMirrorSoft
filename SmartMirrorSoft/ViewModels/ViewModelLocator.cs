@@ -53,6 +53,9 @@ namespace SmartMirrorSoft.ViewModels
             SimpleIoc.Default.Unregister<IRegistrationService>();
             SimpleIoc.Default.Register<IRegistrationService>(() => new RegistrationService(RunnableAppFactoryInstance));
             SimpleIoc.Default.Register<CalculatorViewModel>();
+
+            SimpleIoc.Default.Unregister<DesktopLeftViewModel>();
+            SimpleIoc.Default.Register<DesktopLeftViewModel>(() => new DesktopLeftViewModel(RegistrationServiceInstance));
             
             SimpleIoc.Default.Register<PathToIconConverter>();
             SimpleIoc.Default.Unregister<AppStoreViewModel>();
@@ -98,6 +101,14 @@ namespace SmartMirrorSoft.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<AppStoreViewModel>();
+            }
+        }
+
+        public DesktopLeftViewModel DesktopLeftInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DesktopLeftViewModel>();
             }
         }
 
