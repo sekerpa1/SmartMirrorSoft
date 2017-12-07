@@ -25,149 +25,189 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <control:DesktopLeft Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="0" Grid.RowSpan="4" />
         <Rectangle Grid.Column="1" Grid.Row="1" RadiusX="15" RadiusY="14" Fill="White" Height="30"></Rectangle>
         <Image Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="30" Source="/Icons/VisualEditor_-_Icon_-_Bold_G.svg.png"></Image>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="10" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Search your device, apps, web..." />
         <FlipView x:Name="flipView1" Grid.Column="1" Grid.Row="2">
-            <GridView>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid MaximumRowsOrColumns="5" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-                <GridViewItem>
-                    <Button>
-                        <Button.Flyout>
-                            <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
-                                <StackPanel Width="75" HorizontalAlignment="Stretch">
-                                    <Button Width="75" CommandParameter="001-sunset-1.png" Command="{Binding InstallApp}">
-                                        <TextBlock Text="Install" />
-                                    </Button>
-                                    <Button Width="75" Command="{Binding UninstallApp}">
-                                        <TextBlock Text="Uninstall" />
-                                    </Button>
-                                </StackPanel>
-                            </Flyout>
-                        </Button.Flyout>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-            </GridView>
-            <GridView Grid.Column="1" Grid.Row="1">
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid MaximumRowsOrColumns="5" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-                <GridViewItem>
-                    <Button>
-                        <StackPanel>
-                            <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
-                            <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Button>
-                </GridViewItem>
-            </GridView>
+            <FlipViewItem>
+                <GridView>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="5" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="001-sunset-1.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="001-sunset-1.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/001-sunset-1.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="002-moai.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="002-moai.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/002-moai.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="005-map.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="005-map.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/005-map.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="015-trolley.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="015-trolley.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/015-trolley.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                </GridView>
+            </FlipViewItem>
+            <FlipViewItem>
+                <GridView>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="5" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="020-church.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="020-church.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/020-church.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="017-japan.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="017-japan.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/017-japan.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="014-church-1.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="014-church-1.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/014-church-1.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                    <GridViewItem>
+                        <Button>
+                            <Button.Flyout>
+                                <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                    <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                        <Button Width="75" CommandParameter="011-formula-1.png" Command="{Binding InstallApp}">
+                                            <TextBlock Text="Install" />
+                                        </Button>
+                                        <Button Width="75" CommandParameter="011-formula-1.png" Command="{Binding UninstallApp}">
+                                            <TextBlock Text="Uninstall" />
+                                        </Button>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <StackPanel>
+                                <Image Height="30" Source="/Icons/011-formula-1.png"/>
+                                <TextBlock Text="Sunset" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </GridViewItem>
+                </GridView>
+            </FlipViewItem>
         </FlipView>
     </Grid>
 </Page>

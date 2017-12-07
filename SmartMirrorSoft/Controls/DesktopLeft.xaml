@@ -29,7 +29,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button VerticalAlignment="Stretch" Width="40" Grid.Column="0" Grid.Row="1">
+        <Button Command="{Binding RefreshCmd}" Padding="10"  VerticalAlignment="Stretch" Width="40" Grid.Column="0" Grid.Row="1">
             <Image  Source="/Icons/Command-Refresh-01.png" Margin="-20,-16.8,-20,-16.2"/>
         </Button>
     </Grid>
