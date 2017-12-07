@@ -123,6 +123,9 @@
     <Compile Include="Views\AppStorePage.xaml.cs">
       <DependentUpon>AppStorePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AppStorePageAlternative.xaml.cs">
+      <DependentUpon>AppStorePageAlternative.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CalculatorPage.xaml.cs">
       <DependentUpon>CalculatorPage.xaml</DependentUpon>
     </Compile>
@@ -1548,6 +1551,7 @@
     <Content Include="Icons\Martz90-Circle-Calendar.png" />
     <Content Include="Icons\niexjjzstcseuzdzkvoq.png" />
     <Content Include="Icons\store.png" />
+    <Content Include="Icons\VisualEditor_-_Icon_-_Bold_G.svg.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -1668,6 +1672,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AppStorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AppStorePageAlternative.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
