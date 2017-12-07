@@ -8,17 +8,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding DesktopLeftInstance, Source={StaticResource Locator}}"
-    d:DesignHeight="300"
+    d:DesignHeight="200"
     d:DesignWidth="80"
     >
     <UserControl.Resources>
         <converter:PathToIconConverter x:Key="ImageConverter"/>
     </UserControl.Resources>
-    <ListView  x:Name="ListViewMain" ItemsSource="{Binding ProgramsCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="74" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <Image HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center"  Source="{Binding IconPath, Converter={StaticResource ImageConverter}}"/>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <ListView Grid.Column="0" Grid.Row="0"  x:Name="ListViewMain" ItemsSource="{Binding ProgramsCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="74" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Image HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center"  Source="{Binding IconPath, Converter={StaticResource ImageConverter}}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button VerticalAlignment="Stretch" Width="40" Grid.Column="0" Grid.Row="1">
+            <Image  Source="/Icons/Command-Refresh-01.png" Margin="-20,-16.8,-20,-16.2"/>
+        </Button>
+    </Grid>
 </UserControl>

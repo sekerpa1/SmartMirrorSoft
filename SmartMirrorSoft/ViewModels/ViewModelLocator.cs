@@ -54,14 +54,19 @@ namespace SmartMirrorSoft.ViewModels
             SimpleIoc.Default.Register<IRegistrationService>(() => new RegistrationService(RunnableAppFactoryInstance));
             SimpleIoc.Default.Register<CalculatorViewModel>();
 
-            SimpleIoc.Default.Unregister<DesktopLeftViewModel>();
-            SimpleIoc.Default.Register<DesktopLeftViewModel>(() => new DesktopLeftViewModel(RegistrationServiceInstance));
             
             SimpleIoc.Default.Register<PathToIconConverter>();
             SimpleIoc.Default.Unregister<AppStoreViewModel>();
             SimpleIoc.Default.Register<AppStoreViewModel>(() => new AppStoreViewModel(RegistrationServiceInstance, PathToIconConverterInstance, nav));
 
-            
+            SimpleIoc.Default.Register<IRegistrationServiceSimple, RegistrationServiceSimple>();
+
+            SimpleIoc.Default.Unregister<AppStoreAlternativeViewModel>();
+            SimpleIoc.Default.Register<AppStoreAlternativeViewModel>(() => new AppStoreAlternativeViewModel(RegistrationServiceSimpleInstance));
+
+            SimpleIoc.Default.Unregister<DesktopLeftViewModel>();
+            SimpleIoc.Default.Register<DesktopLeftViewModel>(() => new DesktopLeftViewModel(RegistrationServiceSimpleInstance));
+
         }
 
 
@@ -71,7 +76,7 @@ namespace SmartMirrorSoft.ViewModels
         // <value>
         // The StartPage view model.
         // </value>
-        
+
         public PathToIconConverter PathToIconConverterInstance
         {
             get
@@ -96,6 +101,14 @@ namespace SmartMirrorSoft.ViewModels
             }
         }
 
+        public AppStoreAlternativeViewModel AppStoreAlternativeInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AppStoreAlternativeViewModel>();
+            }
+        }
+
         public AppStoreViewModel AppStoreInstance
         {
             get
@@ -109,6 +122,14 @@ namespace SmartMirrorSoft.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<DesktopLeftViewModel>();
+            }
+        }
+
+        public IRegistrationServiceSimple RegistrationServiceSimpleInstance
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IRegistrationServiceSimple>();
             }
         }
 

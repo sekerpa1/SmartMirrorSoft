@@ -5,7 +5,13 @@
     xmlns:local="using:SmartMirrorSoft.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:control="using:SmartMirrorSoft.Controls"
+    DataContext="{Binding AppStoreAlternativeInstance, Source={StaticResource Locator}}"
+    mc:Ignorable="d"
+    >
+
+    <Page.Resources>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource FocusVisualBlackStrokeThemeBrush}">
         <Grid.ColumnDefinitions>
@@ -29,9 +35,20 @@
                         <ItemsWrapGrid MaximumRowsOrColumns="5" Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
-
                 <GridViewItem>
                     <Button>
+                        <Button.Flyout>
+                            <Flyout FlyoutPresenterStyle="{StaticResource CustFlyout}">
+                                <StackPanel Width="75" HorizontalAlignment="Stretch">
+                                    <Button Width="75" CommandParameter="001-sunset-1.png" Command="{Binding InstallApp}">
+                                        <TextBlock Text="Install" />
+                                    </Button>
+                                    <Button Width="75" Command="{Binding UninstallApp}">
+                                        <TextBlock Text="Uninstall" />
+                                    </Button>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
                         <StackPanel>
                             <Image Height="30" Source="/Icons/chrome_by_dtafalonso-d67pbhl.png"/>
                             <TextBlock Text="Program" FontFamily="Consolas" Foreground="#99ADB7B7" FontSize="10" HorizontalAlignment="Center"/>
@@ -88,13 +105,6 @@
                 </GridViewItem>
             </GridView>
             <GridView Grid.Column="1" Grid.Row="1">
-                <GridView.Header>
-                    <Grid>
-                        <Rectangle RadiusX="15" RadiusY="14" Fill="White" Height="30"></Rectangle>
-                        <Image HorizontalAlignment="Left" Height="30" Source="/Icons/VisualEditor_-_Icon_-_Bold_G.svg.png"></Image>
-                        <TextBlock FontSize="10" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Search your device, apps, web..." />
-                    </Grid>
-                </GridView.Header>
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid MaximumRowsOrColumns="5" Orientation="Horizontal" />

@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="baseGrid" Background="{ThemeResource FocusVisualBlackStrokeThemeBrush}">
-        <PivotItem Header="Web" Height="Auto">
+        <PivotItem Height="Auto">
             <controls:DesktopLeft />
         </PivotItem>
     </Grid>

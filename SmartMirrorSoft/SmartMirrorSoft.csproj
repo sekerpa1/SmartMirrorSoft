@@ -102,6 +102,9 @@
     <Compile Include="Controls\DesktopLeft.xaml.cs">
       <DependentUpon>DesktopLeft.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\InstallationPopUpMenu.xaml.cs">
+      <DependentUpon>InstallationPopUpMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TabHeader.xaml.cs">
       <DependentUpon>TabHeader.xaml</DependentUpon>
     </Compile>
@@ -114,7 +117,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Programs\Calculator.cs" />
     <Compile Include="Services\IRegistrationService.cs" />
+    <Compile Include="Services\IRegistrationServiceSimple.cs" />
     <Compile Include="Services\RegistrationService.cs" />
+    <Compile Include="Services\RegistrationServiceSimple.cs" />
+    <Compile Include="ViewModels\AppStoreAlternativeViewModel.cs" />
     <Compile Include="ViewModels\AppStoreViewModel.cs" />
     <Compile Include="ViewModels\CalculatorViewModel.cs" />
     <Compile Include="ViewModels\DesktopLeftViewModel.cs" />
@@ -279,6 +285,7 @@
     <Content Include="Icons\118-mosque.png" />
     <Content Include="Icons\119-car.png" />
     <Content Include="Icons\120-boat.png" />
+    <Content Include="Icons\8338-200.png" />
     <Content Include="Icons\appbar.3d.3ds.png" />
     <Content Include="Icons\appbar.3d.collada.png" />
     <Content Include="Icons\appbar.3d.obj.png" />
@@ -1547,6 +1554,7 @@
     <Content Include="Icons\calendar-512.png" />
     <Content Include="Icons\calendar.png" />
     <Content Include="Icons\chrome_by_dtafalonso-d67pbhl.png" />
+    <Content Include="Icons\Command-Refresh-01.png" />
     <Content Include="Icons\gdrive.png" />
     <Content Include="Icons\Martz90-Circle-Calendar.png" />
     <Content Include="Icons\niexjjzstcseuzdzkvoq.png" />
@@ -1601,6 +1609,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\InstallationPopUpMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1634,6 +1646,11 @@
     <Page Include="Styles\ContentDialog\ContentDialogWithCloseButtonStyle\ContentDialogWithCloseButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Flyout\CustomFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Styles\Pivot\PivotBottomHeaderStyle\PivotBottomHeaderStyle.xaml">
       <Generator>MSBuild:Compile</Generator>

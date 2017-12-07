@@ -12,7 +12,7 @@ namespace SmartMirrorSoft.ViewModels
 {
     public class DesktopLeftViewModel : ViewModelBase
     {
-        private IRegistrationService _RegistrationService;
+        private IRegistrationServiceSimple _RegistrationService;
 
         private ObservableCollection<BaseRunnableApp> _ProgramsCollection;
         public ObservableCollection<BaseRunnableApp> ProgramsCollection
@@ -29,14 +29,14 @@ namespace SmartMirrorSoft.ViewModels
             }
         }
 
-        public DesktopLeftViewModel(IRegistrationService registrationService)
+        public DesktopLeftViewModel(IRegistrationServiceSimple registrationService)
         {
             ProgramsCollection = new ObservableCollection<BaseRunnableApp>();
             this._RegistrationService = registrationService;
 
-            foreach (var item in registrationService.GetInstalledApps())
+            foreach (var item in registrationService.GetInstalled())
             {
-                ProgramsCollection.Add(item);
+                ProgramsCollection.Add(new BaseRunnableApp { IconPath=item });
             }
  
         }

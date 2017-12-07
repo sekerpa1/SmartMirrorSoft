@@ -19,6 +19,7 @@
                 <ResourceDictionary Source="Styles\Pivot\PivotHeaderItemAccentUnderlineStyle\PivotHeaderItemAccentUnderlineStyle.xaml"/>
                 <ResourceDictionary Source="Styles\Pivot\PivotTabbedStyle\PivotHeaderItemTabbedStyle.xaml"/>
                 <ResourceDictionary Source="Styles\Pivot\PivotTabbedStyle\PivotTabbedStyle.xaml"/>
+                <ResourceDictionary Source="Styles\Flyout\CustomFlyout.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources\IconsDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
