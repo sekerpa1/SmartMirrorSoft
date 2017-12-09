@@ -29,6 +29,8 @@
         <Rectangle Grid.Column="1" Grid.Row="1" RadiusX="15" RadiusY="14" Fill="White" Height="30"></Rectangle>
         <Image Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="30" Source="/Icons/VisualEditor_-_Icon_-_Bold_G.svg.png"></Image>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="10" FontFamily="Arial" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Search your device, apps, web..." />
+        <Image Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Height="20"  Source="/Icons/55049-200.png" />
+        <Button Command="{Binding BackToDekstopCmd}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="20"  Height="20" Style="{StaticResource ButtonRoundedStyle}" />
         <FlipView x:Name="flipView1" Grid.Column="1" Grid.Row="2">
             <FlipViewItem>
                 <GridView>

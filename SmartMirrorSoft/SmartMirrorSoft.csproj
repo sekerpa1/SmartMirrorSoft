@@ -285,6 +285,7 @@
     <Content Include="Icons\118-mosque.png" />
     <Content Include="Icons\119-car.png" />
     <Content Include="Icons\120-boat.png" />
+    <Content Include="Icons\55049-200.png" />
     <Content Include="Icons\8338-200.png" />
     <Content Include="Icons\appbar.3d.3ds.png" />
     <Content Include="Icons\appbar.3d.collada.png" />
@@ -1554,10 +1555,12 @@
     <Content Include="Icons\calendar-512.png" />
     <Content Include="Icons\calendar.png" />
     <Content Include="Icons\chrome_by_dtafalonso-d67pbhl.png" />
+    <Content Include="Icons\close_black_2048x2048.png" />
     <Content Include="Icons\Command-Refresh-01.png" />
     <Content Include="Icons\gdrive.png" />
     <Content Include="Icons\Martz90-Circle-Calendar.png" />
     <Content Include="Icons\niexjjzstcseuzdzkvoq.png" />
+    <Content Include="Icons\Saint_Andrew%27s_cross_black.svg" />
     <Content Include="Icons\store.png" />
     <Content Include="Icons\VisualEditor_-_Icon_-_Bold_G.svg.png" />
     <Content Include="Properties\Default.rd.xml" />

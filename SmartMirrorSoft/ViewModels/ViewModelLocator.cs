@@ -40,13 +40,13 @@ namespace SmartMirrorSoft.ViewModels
             //Register your services used here
 
             var nav = new NavigationService();
-            nav.Configure("AppStorePage", typeof(AppStorePage));
-            nav.Configure("StartPage", typeof(StartPage));
+            nav.Configure("AppStorePageAlternative", typeof(AppStorePageAlternative));
+            nav.Configure("StartPageAlternative", typeof(StartPageAlternative));
 
 
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
-            SimpleIoc.Default.Unregister<StartPageViewModel>();
-            SimpleIoc.Default.Register<StartPageViewModel>(() => new StartPageViewModel(nav));
+            //SimpleIoc.Default.Unregister<StartPageViewModel>();
+            //SimpleIoc.Default.Register<StartPageViewModel>(() => new StartPageViewModel(nav));
             
             SimpleIoc.Default.Register<IRunnableAppFactory, RunnableAppFactory>();
 
@@ -56,16 +56,16 @@ namespace SmartMirrorSoft.ViewModels
 
             
             SimpleIoc.Default.Register<PathToIconConverter>();
-            SimpleIoc.Default.Unregister<AppStoreViewModel>();
-            SimpleIoc.Default.Register<AppStoreViewModel>(() => new AppStoreViewModel(RegistrationServiceInstance, PathToIconConverterInstance, nav));
+            //SimpleIoc.Default.Unregister<AppStoreViewModel>();
+            //SimpleIoc.Default.Register<AppStoreViewModel>(() => new AppStoreViewModel(RegistrationServiceInstance, PathToIconConverterInstance, nav));
 
             SimpleIoc.Default.Register<IRegistrationServiceSimple, RegistrationServiceSimple>();
 
             SimpleIoc.Default.Unregister<AppStoreAlternativeViewModel>();
-            SimpleIoc.Default.Register<AppStoreAlternativeViewModel>(() => new AppStoreAlternativeViewModel(RegistrationServiceSimpleInstance));
+            SimpleIoc.Default.Register<AppStoreAlternativeViewModel>(() => new AppStoreAlternativeViewModel(RegistrationServiceSimpleInstance, nav));
 
             SimpleIoc.Default.Unregister<DesktopLeftViewModel>();
-            SimpleIoc.Default.Register<DesktopLeftViewModel>(() => new DesktopLeftViewModel(RegistrationServiceSimpleInstance));
+            SimpleIoc.Default.Register<DesktopLeftViewModel>(() => new DesktopLeftViewModel(RegistrationServiceSimpleInstance, nav));
 
         }
 

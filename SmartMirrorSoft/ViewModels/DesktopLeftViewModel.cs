@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 using SmartMirrorSoft.Models;
 using SmartMirrorSoft.Services;
 using System;
@@ -15,6 +16,7 @@ namespace SmartMirrorSoft.ViewModels
     public class DesktopLeftViewModel : ViewModelBase
     {
         private IRegistrationServiceSimple _RegistrationService;
+        private INavigationService _NavigationService;
 
         private ObservableCollection<BaseRunnableApp> _ProgramsCollection;
         public ObservableCollection<BaseRunnableApp> ProgramsCollection
@@ -39,9 +41,18 @@ namespace SmartMirrorSoft.ViewModels
             }
         }
 
-        public DesktopLeftViewModel(IRegistrationServiceSimple registrationService)
+        public ICommand OpenAppStoreCmd
+        {
+            get
+            {
+                return new RelayCommand(this.NavigateToAppStore);
+            }
+        }
+
+        public DesktopLeftViewModel(IRegistrationServiceSimple registrationService, INavigationService navigationService)
         {
             this._RegistrationService = registrationService;
+            this._NavigationService = navigationService;
             this.Refresh();
         }
 
@@ -52,6 +63,11 @@ namespace SmartMirrorSoft.ViewModels
             {
                 ProgramsCollection.Add(new BaseRunnableApp { IconPath = item });
             }
+        }
+
+        public void NavigateToAppStore()
+        {
+            _NavigationService.NavigateTo("AppStorePageAlternative");
         }
     }
 }

@@ -19,7 +19,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="2*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <ListView Grid.Column="0" Grid.Row="0"  x:Name="ListViewMain" ItemsSource="{Binding ProgramsCollection}"  HorizontalAlignment="Left" Margin="0,0,0,10" Width="74" CanDragItems="True" CanReorderItems="True" AllowDrop="True">
@@ -30,7 +31,10 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Command="{Binding RefreshCmd}" Padding="10"  VerticalAlignment="Stretch" Width="40" Grid.Column="0" Grid.Row="1">
-            <Image  Source="/Icons/Command-Refresh-01.png" Margin="-20,-16.8,-20,-16.2"/>
+            <Image  Source="/Icons/Command-Refresh-01.png" Margin="0,-16.8,-20,-16.2"/>
+        </Button>
+        <Button Command="{Binding OpenAppStoreCmd}" Padding="10"  VerticalAlignment="Stretch" Width="40" Grid.Column="0" Grid.Row="2">
+            <Image  Source="/Icons/027-shop.png" Margin="0,-16.8,-20,-16.2"/>
         </Button>
     </Grid>
 </UserControl>
